@@ -12,6 +12,7 @@ def home():
 
 @app.post("/generate-video")
 def generate_video(req: VideoRequest):
+    user_prompt = req.text  # IMPORTANT
 
     script = f"""
 Scene 1:
@@ -28,8 +29,9 @@ Scene 3:
 Voiceover: Without insurance, savings disappear fast.
 Visual: Empty wallet animation.
 On-screen text: Be protected, stay insured.
+
+User Prompt Used:
+{user_prompt}
 """
 
-    return {
-        "script":  video 
-    }
+    return {"script": script}
